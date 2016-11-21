@@ -1,0 +1,30 @@
+<% if flash[:notice] %>
+  <div class="notice">
+    <%= flash[:notice] %></p>
+  </div>
+<% end %>
+
+<div class="card">
+  <h1><%= @team.name %></h1>
+
+  <p>League: <%= @team.league %></p>
+  <% unless @team.players.empty? %>
+    <h2>Players</h2>
+    <ol>
+      <% @team.players.each do |player| %>
+        <li><a href="/players/<%= player.id %>"><%= player.name %></a></li>
+      <% end %>
+    </ol><br>
+  <% end %>
+  <% unless @team.games.empty? %>
+    <h2>Games</h2>
+    <ol>
+      <% @team.games.each do |game| %>
+        <li><a href="/games/<%= game.id %>"><%= game.date %></a></li>
+      <% end %>
+    </ol><br>
+  <% end %>
+  <a href="/teams">Back</a> |
+  <a href="/teams/<%= @team.id %>/edit">Edit</a> |
+  <a href="/teams/<%= @team.id %>/destroy">Delete</a>
+</div>
