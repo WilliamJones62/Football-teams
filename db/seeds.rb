@@ -6,13 +6,14 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 Team.create([
-  {:name => "Aston Villa", :league => "Championship"},
-  {:name => "Arsenal", :league => "Premiership"},
-  {:name => "England", :league => "International"}
+  {name: "Aston Villa", league: "Championship"},
+  {name: "Arsenal", league: "Premiership"},
+  {name: "England", league: "International"}
 ])
 
-Player.create([
-  {:name => "Jonathan Kodjia", :team => "Aston Villa"},
-  {:name => "Alexis Sanchez", :team => "Arsenal"},
-  {:name => "Wayne Rooney", :team => "England"}
-])
+#Player.create([
+#  {name: "Jonathan Kodjia", team: "Aston Villa"},
+#  {name: "Gabriel Agbonlahor", team: "Aston Villa"},
+#  {name: "Alexis Sanchez", team: "Arsenal"},
+#  {name: "Wayne Rooney", team: "England"}
+#])

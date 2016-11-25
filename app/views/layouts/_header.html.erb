@@ -5,6 +5,6 @@
         <%= content_tag(:div, flash[:notice], :id => "flash_notice") if flash[:notice] %>
         <%= content_tag(:div, flash[:alert], :id => "flash_alert") if flash[:alert] %>
 
-        <li> <%= link_to "Football Home", team_path %> </li>
+        <li> <%= link_to "Football Home", controller: "static_pages", action: "home" %> </li>
     </ul>
 </nav>
