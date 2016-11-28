@@ -11,9 +11,9 @@ Team.create([
   {name: "England", league: "International"}
 ])
 
-#Player.create([
-#  {name: "Jonathan Kodjia", team: "Aston Villa"},
-#  {name: "Gabriel Agbonlahor", team: "Aston Villa"},
-#  {name: "Alexis Sanchez", team: "Arsenal"},
-#  {name: "Wayne Rooney", team: "England"}
-#])
+Player.create([
+  {name: "Jonathan Kodjia", team_id: 0},
+  {name: "Gabriel Agbonlahor", team_id: 0},
+  {name: "Alexis Sanchez", team_id: 1},
+  {name: "Wayne Rooney", team_id: 2}
+])

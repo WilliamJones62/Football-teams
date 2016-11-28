@@ -1,7 +1,6 @@
 class TeamsController < ApplicationController
 
   before_action :set_team, only: [:show, :edit, :update, :destroy]
-#  before_action :require_login, only: [:new, :edit, :update, :destroy]
   before_action :signed_in?, only: [:new, :edit, :update, :destroy]
   before_action :authorize_user!, only: [:edit, :update, :destroy]
 
@@ -11,7 +10,10 @@ class TeamsController < ApplicationController
 
   def new
     @team = Team.new
+    13.times { @team.players.build }
+    46.times { @team.games.build }
   end
+
 
   def edit
   end
@@ -19,7 +21,6 @@ class TeamsController < ApplicationController
   def create
     @team = Team.new(team_params)
     @team.user_id = current_user.id
-
     respond_to do |format|
       if @team.save!
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
@@ -31,6 +32,12 @@ class TeamsController < ApplicationController
 
   def show
     @team = Team.find(params[:id])
+    if @team.players.last.try(:name)
+      @team.players.build
+    end
+    if @team.games.last.try(:date)
+      @team.games.build
+    end
   end
 
   def update
@@ -56,7 +63,19 @@ private
     end
 
     def team_params
-      params.require(:team).permit(:name, :league)
+      params.require(:team).permit(
+        :name, :league,
+        players_attributes: [
+          :name
+        ],
+        games_attributes: [
+          :date,
+          :opponent,
+          :score_for,
+          :score_against,
+          :home_away
+        ]
+      )
     end
 
     def signed_in?
@@ -66,7 +85,7 @@ private
     end
 
     def authorize_user!
-      unless current_user == @team.user_id || current_user.admin?
+      unless current_user.id == @team.user_id || current_user.admin?
         redirect_to team_path(id: @team.id), :alert => "Access denied."
       end
     end
