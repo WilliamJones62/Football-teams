@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
-#  resources :games
-#  resources :players
+  resources :games, only: [:show]
+  resources :players, only: [:show]
   resources :teams
   devise_for :users
   get '/auth/facebook/callback' => 'users#create'

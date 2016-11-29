@@ -22,10 +22,10 @@
   <ul>
     <%= t.fields_for :games do |game| %>
     <li>
-      date: <%= game.text_field :date %>
+      date: <%= game.date_field :date %>
       opponent: <%= game.text_field :opponent %>
-      score for: <%= game.text_field :score_for %>
-      score against: <%= game.text_field :score_against %>
+      score for: <%= game.number_field :score_for %>
+      score against: <%= game.number_field :score_against %>
       home/away: <%= game.text_field :home_away %>
     </li>
     <% end %>

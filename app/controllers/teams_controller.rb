@@ -22,10 +22,13 @@ class TeamsController < ApplicationController
     @team = Team.new(team_params)
     @team.user_id = current_user.id
     respond_to do |format|
-      if @team.save!
+      if @team.save
         format.html { redirect_to @team, notice: 'Team was successfully created.' }
       else
-        format.html { render :new }
+        format.html {
+          flash[:error] = @team.errors.full_messages.first
+          render :new
+        }
       end
     end
   end
@@ -45,7 +48,10 @@ class TeamsController < ApplicationController
       if @team.update(team_params)
         format.html { redirect_to @team, notice: 'Team was successfully updated.' }
       else
-        format.html { render :edit }
+        format.html {
+          flash[:error] = @team.errors.full_messages.first
+          render :edit
+        }
       end
     end
   end

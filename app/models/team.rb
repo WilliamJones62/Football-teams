@@ -11,6 +11,6 @@ class Team < ActiveRecord::Base
 
   def erase_empty_players_and_games
     self.players = self.players.select {|i| i.name && i.name != ''}
-    self.games = self.games.select {|i| i.date && i.date != '' || i.opponent && i.opponent != '' || i.score_for && i.score_for != '' || i.score_against && i.score_against != '' || i.home_away && i.home_away != ''}
+    self.games = self.games.select {|i| i.date && i.date != ''}
   end
 end

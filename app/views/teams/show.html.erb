@@ -12,7 +12,9 @@
     <h2>Players</h2>
     <ol>
       <% @team.players.each do |player| %>
-        <li><%= player.name %></li>
+        <% if player.name != '' %>
+        <li><a href="/players/<%= player.id %>"><%= player.name %></a></li>
+        <% end %>
       <% end %>
     </ol><br>
   <% end %>
@@ -20,7 +22,9 @@
     <h2>Games</h2>
     <ol>
       <% @team.games.each do |game| %>
-        <li><%= game.date %></li>
+        <% if game.date != '' %>
+        <p><a href="/games/<%= game.id %>"><%= game.date %></a> Opponent: <%= game.opponent %></p>
+        <% end %>
       <% end %>
     </ol><br>
   <% end %>
