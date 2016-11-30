@@ -2,6 +2,7 @@ class GamesController < ApplicationController
   def show
     @game = Game.find(params[:id])
     @team = @game.team
-    @players = @team.players.all
+    session[:team_id] = @team.id
+    @players = @game.players.all
   end
 end

@@ -66,6 +66,7 @@ class TeamsController < ApplicationController
 private
     def set_team
       @team = Team.find(params[:id])
+      session[:team_id] = @team_id
     end
 
     def team_params
