@@ -74,9 +74,11 @@ private
       params.require(:team).permit(
         :name, :league,
         players_attributes: [
+          :id,
           :name
         ],
         games_attributes: [
+          :id,
           :date,
           :opponent,
           :score_for,

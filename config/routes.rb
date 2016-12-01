@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
   root 'static_pages#home'
+  # destroy as get requests
+  get '/teams/:id/destroy', to: 'teams#destroy'
   resources :games, only: [:show]
   resources :players, only: [:show]
   resources :player_games
