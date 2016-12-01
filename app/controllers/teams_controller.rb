@@ -38,6 +38,7 @@ class TeamsController < ApplicationController
     if @team.players.last.try(:name)
       @team.players.build
       @most_played = @team.player_with_most_games
+      @best_player = @team.best_player
     end
     if @team.games.last.try(:date)
       @team.games.build

@@ -27,4 +27,19 @@ class Team < ActiveRecord::Base
     save_player
   end
 
+  def best_player
+    save_rating = 0
+    save_player = ''
+    self.players.each do |player|
+      if player.player_games.count > 0
+        current_rating = player.player_games.average(:player_rating)
+        if current_rating > save_rating
+          save_rating = current_rating
+          save_player = player
+        end
+      end
+    end
+    save_player
+  end
+
  end
