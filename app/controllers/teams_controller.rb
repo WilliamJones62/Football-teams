@@ -37,6 +37,7 @@ class TeamsController < ApplicationController
     @team = Team.find(params[:id])
     if @team.players.last.try(:name)
       @team.players.build
+      @most_played = @team.player_with_most_games
     end
     if @team.games.last.try(:date)
       @team.games.build
@@ -87,7 +88,7 @@ private
 
     def signed_in?
       unless current_user
-        redirect_to team_path, :alert => "Access denied."
+        redirect_to teams_path, :alert => "Access denied."
       end
     end
 

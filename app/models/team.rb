@@ -13,4 +13,18 @@ class Team < ActiveRecord::Base
     self.players = self.players.select {|i| i.name && i.name != ''}
     self.games = self.games.select {|i| i.date && i.date != ''}
   end
-end
+
+  def player_with_most_games
+    save_count = 0
+    save_player = ''
+    self.players.each do |player|
+      current_count = player.player_games.count
+      if current_count > save_count
+        save_count = current_count
+        save_player = player
+      end
+    end
+    save_player
+  end
+
+ end

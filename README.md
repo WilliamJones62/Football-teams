@@ -1,24 +1,11 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Football Teams
 
-Things you may want to cover:
+* Ruby version 2.3.0
 
-* Ruby version
+* System dependencies: rails 5.0.0, devise, omniauth-facebook
 
-* System dependencies
+* Database creation: Use the migrations in db/migrate
 
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+* Database initialization: Use seeds.rd

@@ -7,14 +7,13 @@ class PlayerGamesController < ApplicationController
     @games = @team.games.all
   end
 
-  def edit
-  end
-
   def create
     @player_game = PlayerGame.new(player_game_params)
     respond_to do |format|
       if @player_game.save
-        format.html { redirect_to @player_games, notice: 'Player/game was successfully created.' }
+        @team = current_team
+        @player = current_player
+        format.html { redirect_to @player_game, notice: 'Game rating was successfully created.' }
       else
         format.html {
           flash[:error] = @player_game.errors.full_messages.first
@@ -22,6 +21,11 @@ class PlayerGamesController < ApplicationController
         }
       end
     end
+  end
+
+  def show
+    @player_game = PlayerGame.find(params[:id])
+    @player = Player.find(current_player)
   end
 
   def edit
@@ -47,16 +51,10 @@ class PlayerGamesController < ApplicationController
     end
   end
 
-  def show
-    @player_game = PlayerGame.find(params[:id])
-    @player = @player_game.player
-    @team = @player_game.player.team
+private
+  def player_game_params
+    params.require(:player_game).permit(
+      :player_rating, :player_id, :game_id
+    )
   end
-
-  private
-    def player_game_params
-      params.require(:player_game).permit(
-        :player_rating, :player_id, :game_id
-      )
-    end
-  end
+end
