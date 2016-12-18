@@ -4,7 +4,7 @@
   <h3>Games Played:</h3>
   <ol>
     <% @games.each do |game| %>
-      <li><a href="/games/<%= game.id %>"><%= game.date %></a> Opponent: <%= game.opponent %></li>
+      <li><a href="/teams/<%= @team.id %>/games/<%= game.id %>"><%= game.date %></a> Opponent: <%= game.opponent %></li>
     <% end %>
     </ol>
   <% end %>

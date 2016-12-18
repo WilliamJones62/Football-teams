@@ -14,7 +14,6 @@ class TeamsController < ApplicationController
     46.times { @team.games.build }
   end
 
-
   def edit
   end
 

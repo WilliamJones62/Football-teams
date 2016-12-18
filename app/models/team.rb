@@ -9,6 +9,11 @@ class Team < ActiveRecord::Base
 
   before_save :erase_empty_players_and_games
 
+  def player_attributes=(player)
+    self.player = Player.find_or_create_by(name: player.name)
+    self.player.update(player)
+  end
+
   def erase_empty_players_and_games
     self.players = self.players.select {|i| i.name && i.name != ''}
     self.games = self.games.select {|i| i.date && i.date != ''}
