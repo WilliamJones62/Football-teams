@@ -8,7 +8,7 @@ Rails.application.routes.draw do
     resources :players, only: [:show]
     resources :games, only: [:show]
   end
-  devise_for :users, :controllers => { :omniauth_callbacks => "users/omniauth_callbacks" } 
+  devise_for :users, controllers: { :omniauth_callbacks => "users/omniauth_callbacks" }
   get '/users/sign_out', to: 'static_pages#home'
 
 end
